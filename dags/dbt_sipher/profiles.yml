@@ -1,0 +1,30 @@
+# For more information on how to configure this file, please see:
+# https://docs.getdbt.com/docs/get-started/connection-profiles
+
+dbt_sipher:
+  target: dev
+  outputs:
+    dev:
+      type: bigquery
+      project: sipher-data-testing
+      dataset: tmp_dbt
+      location: US
+      priority: interactive
+      job_execution_timeout_seconds: 300
+      job_retries: 1
+      method: service-account
+      keyfile: "{{ env_var('DBT_KEY_FILE') }}"
+      execution_project: data-platform-429203
+      threads: 10
+    production:
+      type: bigquery
+      project: sipher-data-platform
+      dataset: dbt_sipher
+      location: US
+      priority: interactive
+      job_execution_timeout_seconds: 300
+      job_retries: 1
+      method: service-account
+      keyfile: "{{ env_var('DBT_KEY_FILE') }}"
+      execution_project: data-platform-429203
+      threads: 10

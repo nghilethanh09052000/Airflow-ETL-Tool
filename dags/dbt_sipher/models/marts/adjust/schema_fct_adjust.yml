@@ -1,0 +1,24 @@
+version: 2
+
+models:
+  - name: fct_adjust
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - created_at_date
+            - app_name_dashboard
+            - app_version
+            - environment
+            - os_name
+            - device_type
+            - country
+            - network_name
+            - campaign_name
+            - activity_kind
+            - event_name
+            - reporting_currency
+            - revenue
+            - cost
+            - count
+            - unique_user
+

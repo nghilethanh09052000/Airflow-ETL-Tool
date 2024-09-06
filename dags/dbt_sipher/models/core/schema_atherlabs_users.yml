@@ -1,0 +1,15 @@
+version: 2
+
+models:
+  - name: atherlabs_users
+    columns:
+      - name: act_date
+        tests:
+          - not_null
+      - name: wallet_address
+        tests:
+          - dbt_expectations.expect_column_value_lengths_to_be_between:
+              min_value: 42
+              max_value: 42
+              strictly: false 
+              row_condition: "wallet_address is not null"

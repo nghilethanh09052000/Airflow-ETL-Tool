@@ -1,0 +1,21 @@
+version: 2
+
+sources:
+  - name: raw_appsflyer_locker
+    database: sipher-data-platform
+    schema: raw_appsflyer_locker
+    tables:
+      - name: attributed_ad_revenue
+        identifier: attributed_ad_revenue
+
+      - name: organic_ad_revenue
+        identifier: organic_ad_revenue
+      
+      - name: inapps
+        identifier: inapps
+      
+      - name: cohort_unified
+        indentifier: cohort_unified
+
+      - name: installs
+        identifier: installs

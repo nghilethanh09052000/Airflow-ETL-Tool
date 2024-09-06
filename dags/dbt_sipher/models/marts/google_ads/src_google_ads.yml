@@ -1,0 +1,147 @@
+version: 2
+
+sources:
+  - name: raw_google_adwords
+    database: sipher-data-platform
+    schema: raw_google_adwords
+    
+    freshness: 
+      warn_after: {count: 1, period: day}
+      error_after: {count: 2, period: day}
+    loaded_at_field: "_LATEST_DATE"
+
+    tables:
+      - name: ads_AccountBasicStats
+        identifier: ads_AccountBasicStats_4026678554
+      - name: ads_AccountConversionStats
+        identifier: ads_AccountConversionStats_4026678554
+      - name: ads_AccountNonClickStats_4026678554  
+        identifier: ads_AccountNonClickStats_4026678554
+      - name: ads_AccountStats
+        identifier: ads_AccountStats_4026678554
+      - name: ads_AdBasicStats
+        identifier: ads_AdBasicStats_4026678554
+      - name: ads_AdConversionStats
+        identifier: ads_AdConversionStats_4026678554
+      - name: ads_AdCrossDeviceConversionStats
+        identifier: ads_AdCrossDeviceConversionStats_4026678554
+      - name: ads_AdCrossDeviceStats
+        identifier: ads_AdCrossDeviceStats_4026678554
+      - name: ads_AdGroupBasicStats
+        identifier: ads_AdGroupBasicStats_4026678554
+      - name: ads_AdGroupBidModifier
+        identifier: ads_AdGroupBidModifier_4026678554
+      - name: ads_AdGroupConversionStats
+        identifier: ads_AdGroupConversionStats_4026678554
+      - name: ads_AdGroupCriterion 
+        identifier: ads_AdGroupCriterion_4026678554
+      - name: ads_AdGroupCrossDeviceConversionStats 
+        identifier: ads_AdGroupCrossDeviceConversionStats_4026678554
+      - name: ads_AdGroupCrossDeviceStats 
+        identifier: ads_AdGroupCrossDeviceStats_4026678554
+      - name: ads_AdGroupStats 
+        identifier: ads_AdGroupStats_4026678554
+      - name: ads_AdGroup 
+        identifier: ads_AdGroup_4026678554
+      - name: ads_AdStats 
+        identifier: ads_AdStats_4026678554
+      - name: ads_Ad 
+        identifier: ads_Ad_4026678554
+      - name: ads_AgeRangeBasicStats 
+        identifier: ads_AgeRangeBasicStats_4026678554
+      - name: ads_AgeRangeConversionStats 
+        identifier: ads_AgeRangeConversionStats_4026678554
+      - name: ads_AgeRangeNonClickStats 
+        identifier: ads_AgeRangeNonClickStats_4026678554
+      - name: ads_AgeRangeStats 
+        identifier: ads_AgeRangeStats_4026678554
+      - name: ads_AgeRange 
+        identifier: ads_AgeRange_4026678554
+      - name: ads_BudgetStats 
+        identifier: ads_BudgetStats_4026678554
+      - name: ads_Budget 
+        identifier: ads_Budget_4026678554
+      - name: ads_CampaignBasicStats 
+        identifier: ads_CampaignBasicStats_4026678554
+      - name: ads_CampaignConversionStats 
+        identifier: ads_CampaignConversionStats_4026678554
+      - name: ads_CampaignCookieStats 
+        identifier: ads_CampaignCookieStats_4026678554
+      - name: ads_CampaignCriterion 
+        identifier: ads_CampaignCriterion_4026678554
+      - name: ads_CampaignCrossDeviceConversionStats 
+        identifier: ads_CampaignCrossDeviceConversionStats_4026678554
+      - name: ads_CampaignCrossDeviceStats 
+        identifier: ads_CampaignCrossDeviceStats_4026678554
+      - name: ads_CampaignLocationTargetStats 
+        identifier: ads_CampaignLocationTargetStats_4026678554
+      - name: ads_CampaignStats 
+        identifier: ads_CampaignStats_4026678554
+      - name: ads_Campaign 
+        identifier: ads_Campaign_4026678554
+      - name: ads_ClickStats 
+        identifier: ads_ClickStats_4026678554
+      - name: ads_Customer 
+        identifier: ads_Customer_4026678554
+      - name: ads_DisplayVideoAutomaticPlacementsStats 
+        identifier: ads_DisplayVideoAutomaticPlacementsStats_4026678554
+      - name: ads_DisplayVideoKeywordStats 
+        identifier: ads_DisplayVideoKeywordStats_4026678554
+      - name: ads_DisplayVideoTopicStats 
+        identifier: ads_DisplayVideoTopicStats_4026678554
+      - name: ads_GenderBasicStats 
+        identifier: ads_GenderBasicStats_4026678554
+      - name: ads_GenderNonClickStats 
+        identifier: ads_GenderNonClickStats_4026678554
+      - name: ads_GenderStats 
+        identifier: ads_GenderStats_4026678554
+      - name: ads_Gender 
+        identifier: ads_Gender_4026678554
+      - name: ads_GeoConversionStats 
+        identifier: ads_GeoConversionStats_4026678554
+      - name: ads_GeoStats 
+        identifier: ads_GeoStats_4026678554
+      - name: ads_HourlyAccountConversionStats 
+        identifier: ads_HourlyAccountConversionStats_4026678554
+      - name: ads_HourlyAccountStats 
+        identifier: ads_HourlyAccountStats_4026678554
+      - name: ads_HourlyAdGroupConversionStats 
+        identifier: ads_HourlyAdGroupConversionStats_4026678554
+      - name: ads_HourlyAdGroupStats 
+        identifier: ads_HourlyAdGroupStats_4026678554
+      - name: ads_HourlyCampaignConversionStats 
+        identifier: ads_HourlyCampaignConversionStats_4026678554
+      - name: ads_HourlyCampaignStats 
+        identifier: ads_HourlyCampaignStats_4026678554
+      - name: ads_Keyword 
+        identifier: ads_Keyword_4026678554
+      - name: ads_LandingPageStats 
+        identifier: ads_LandingPageStats_4026678554
+      - name: ads_LocationBasedCampaignCriterion 
+        identifier: ads_LocationBasedCampaignCriterion_4026678554
+      - name: ads_LocationsUserLocationsStats 
+        identifier: ads_LocationsUserLocationsStats_4026678554
+      - name: ads_ParentalStatusBasicStats 
+        identifier: ads_ParentalStatusBasicStats_4026678554
+      - name: ads_ParentalStatusNonClickStats 
+        identifier: ads_ParentalStatusNonClickStats_4026678554
+      - name: ads_ParentalStatusStats 
+        identifier: ads_ParentalStatusStats_4026678554
+      - name: ads_ParentalStatus 
+        identifier: ads_ParentalStatus_4026678554
+      - name: ads_PlacementBasicStats 
+        identifier: ads_PlacementBasicStats_4026678554
+      - name: ads_PlacementNonClickStats 
+        identifier: ads_PlacementNonClickStats_4026678554
+      - name: ads_PlacementStats 
+        identifier: ads_PlacementStats_4026678554
+      - name: ads_Placement 
+        identifier: ads_Placement_4026678554
+      - name: ads_VideoBasicStats 
+        identifier: ads_VideoBasicStats_4026678554
+      - name: ads_VideoNonClickStats 
+        identifier: ads_VideoNonClickStats_4026678554
+      - name: ads_VideoStats
+        identifier: ads_VideoStats_4026678554
+      - name: ads_Video 
+        identifier: ads_Video_4026678554

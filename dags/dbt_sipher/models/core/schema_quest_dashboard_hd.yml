@@ -1,0 +1,34 @@
+version: 2
+
+models:
+  - name: quest_dashboard_hd
+    columns:
+      - name: event_time
+        tests:
+          - not_null
+      - name: user_id
+        tests:
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: string
+      - name: quest_userId
+        tests:
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: string
+      - name: point_userid
+        tests:
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: string
+      - name: user_pseudo_id
+        tests:
+          - not_null
+      - name: country
+        tests:
+          - not_null
+      - name: wallet_address
+        tests:
+          - dbt_expectations.expect_column_value_lengths_to_be_between:
+              min_value: 42
+              max_value: 44
+              strictly: true
+              row_condition: "wallet_address is not null"
+      

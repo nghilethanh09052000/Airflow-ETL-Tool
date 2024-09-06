@@ -1,0 +1,25 @@
+version: 2
+
+models:
+  - name: staking_rewards_total_claimed
+    columns:
+      - name: platform
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['lp_uniswap', 'single_side', 'lp_kyberswap']
+      - name: first_date_of_month
+        tests:
+          - not_null
+      - name: wallet_address
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_value_lengths_to_be_between:
+          # 42
+              min_value: 41
+              max_value: 43
+              strictly: true
+              row_condition: "wallet_address is not null"
+      - name: total_claimed
+        tests:
+          - not_null

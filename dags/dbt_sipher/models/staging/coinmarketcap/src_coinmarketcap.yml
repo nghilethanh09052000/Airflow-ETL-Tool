@@ -1,0 +1,36 @@
+version: 2
+
+sources:
+  - name: raw_coinmarketcap
+    database: sipher-data-platform
+    schema: raw_coinmarketcap
+    tables:
+      - name: main_token_quotes
+        identifier: main_token_quotes
+        freshness: 
+          warn_after: {count: 1, period: day}
+          error_after: {count: 2, period: day}
+        loaded_at_field: "CAST(timestamp AS timestamp)"
+        columns:
+          - name: name
+            tests:
+              - not_null
+          - name: timestamp
+            tests:
+              - not_null
+              - dbt_expectations.expect_column_to_exist
+
+      - name: main_token_quotes_intraday
+        identifier: main_token_quotes_intraday
+        freshness: 
+          warn_after: {count: 1, period: day}
+          error_after: {count: 2, period: day}
+        loaded_at_field: "TIMESTAMP_SECONDS(CAST(timestamp AS INT64))"
+        columns:
+          - name: timestamp
+            tests:
+              - not_null
+              - dbt_expectations.expect_column_to_exist
+          - name: token_symbol
+            tests:
+              - not_null

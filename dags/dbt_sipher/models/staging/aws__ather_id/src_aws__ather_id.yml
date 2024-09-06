@@ -1,0 +1,73 @@
+version: 2
+
+sources:
+  - name: raw_atherid_gcs
+    database: sipher-data-platform
+    schema: raw_atherid_gcs
+    
+    freshness: 
+      warn_after: {count: 1, period: day}
+      error_after: {count: 2, period: day}
+    loaded_at_field: "CAST(dt AS timestamp)"
+
+    tables:
+      - name: aws__raw_ather_id_cognito
+        identifier: gcs_external_raw_ather_id_user_cognito
+        columns:
+          - name: Username
+            tests:
+              - not_null
+              - dbt_expectations.expect_column_to_exist
+          - name: UserCreateDate
+            tests:
+              - not_null
+              - dbt_expectations.expect_column_to_exist
+          - name: user_id
+            tests:
+              - not_null
+              - dbt_expectations.expect_column_to_exist
+          - name: email
+            tests:
+              - not_null
+              - dbt_expectations.expect_column_to_exist
+          - name: dt
+            tests:
+              - dbt_expectations.expect_column_values_to_be_of_type: 
+                  column_type: date
+
+      - name: aws__raw_ather_id_user
+        identifier: gcs_external_raw_ather_id_user
+        columns:
+          - name: id
+            tests:
+              - not_null
+              - dbt_expectations.expect_column_to_exist
+          - name: createdAt
+            tests:
+              - not_null
+              - dbt_expectations.expect_column_to_exist
+          - name: email
+            tests:
+              - dbt_expectations.expect_column_to_exist
+          - name: dt
+            tests:
+              - dbt_expectations.expect_column_values_to_be_of_type: 
+                  column_type: date
+
+      - name: aws__raw_ather_id_wallet
+        identifier: gcs_external_raw_ather_id_wallet
+        columns:
+          - name: address
+            tests:
+              - not_null
+          - name: createdAt
+            tests:
+              - not_null
+          - name: userId
+            tests:
+              - not_null
+              - dbt_expectations.expect_column_to_exist
+          - name: dt
+            tests:
+              - dbt_expectations.expect_column_values_to_be_of_type: 
+                  column_type: date

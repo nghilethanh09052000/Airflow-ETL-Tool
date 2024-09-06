@@ -1,0 +1,17 @@
+version: 2
+
+models:
+  - name: quest_retention_daily_hd
+    columns:
+      - name: period
+        tests:
+          - dbt_utils.not_null_proportion:
+              at_least: 0.80
+          - unique
+    # tests:
+    #   - not_null:
+    #     column_names:
+    #       - period
+    #       - quest_userId
+    #       - churn_rate
+    #       - drop_

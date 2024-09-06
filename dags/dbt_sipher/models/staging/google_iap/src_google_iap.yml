@@ -1,0 +1,23 @@
+version: 2
+
+sources:
+  - name: raw_google_iap
+    database: sipher-data-platform
+
+    freshness: 
+      warn_after: {count: 1, period: day}
+      error_after: {count: 2, period: day}
+    loaded_at_field: "TIMESTAMP_MICROS(event_timestamp)"
+
+    schema: raw_google_iap
+    tables:
+      - name: raw_Atherlabs_financial_reports__earnings_reports
+        identifier: raw_Atherlabs_financial_reports__earnings_reports
+      - name: raw_Atherlabs_financial_reports__estimated_sales_reports
+        identifier: raw_Atherlabs_financial_reports__estimated_sales_reports
+      
+      - name: raw_Atherlabs_statistics_reports__installs_reports
+        identifier: raw_Atherlabs_statistics_reports__installs_reports
+      
+
+        

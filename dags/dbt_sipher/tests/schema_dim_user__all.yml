@@ -1,0 +1,8 @@
+version: 2
+
+models:
+  - name: dim_ather_user__wallet
+    columns:
+      - name: user_id
+        tests:
+          - not_null

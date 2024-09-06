@@ -1,0 +1,19 @@
+version: 2
+
+models:
+  - name: raw_loyalty_hd
+    columns:
+      - name: user_id
+        tests:
+          - dbt_utils.not_null_proportion:
+              at_least: 0.15
+          # - relationships:
+          #     to: ref('dim_ather_user__all')
+          #     field: user_id
+      - name: wallet_address
+        tests:
+          - dbt_expectations.expect_column_value_lengths_to_be_between:
+              min_value: 41 # (Optional)
+              max_value: 43 # (Optional)
+              strictly: true
+              row_condition: "wallet_address is not null" # (Optional)

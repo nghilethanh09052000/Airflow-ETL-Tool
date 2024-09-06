@@ -1,0 +1,13 @@
+version: 2
+
+models:
+  - name: dim_adjust_users
+    columns:
+      - name: user_id
+        tests:
+          - unique
+          - not_null
+      - name: first_created_at
+        tests:
+          - unique
+          - not_null

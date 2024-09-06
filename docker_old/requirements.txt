@@ -1,0 +1,9 @@
+airflow-dbt==0.4.0
+dbt-bigquery==1.7.8
+discord==2.3.2
+slack_sdk==3.27.1
+anthropic==0.25.7
+scikit-learn==1.2.1
+beautifulsoup4==4.12.3
+lxml==5.2.1
+scrapy==2.11.2

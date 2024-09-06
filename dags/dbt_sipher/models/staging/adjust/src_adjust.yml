@@ -1,0 +1,12 @@
+version: 2
+
+sources:
+  - name: raw_adjust
+    database: sipher-data-platform
+    schema: raw_adjust
+    tables:
+      - name: raw_adjust_hidden_atlas
+        freshness: 
+          warn_after: {count: 1, period: day}
+          error_after: {count: 2, period: day}
+        loaded_at_field: "snapshot"

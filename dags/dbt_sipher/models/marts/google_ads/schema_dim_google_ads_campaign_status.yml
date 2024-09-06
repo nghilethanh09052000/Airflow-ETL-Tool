@@ -1,0 +1,12 @@
+version: 2
+
+models:
+  - name: dim_google_ads_campaign_status
+    columns:
+      - name: campaign_id
+        tests:
+          - dbt_utils.not_constant
+          - not_null
+      - name: campaign_name
+        tests: 
+          - dbt_utils.not_empty_string

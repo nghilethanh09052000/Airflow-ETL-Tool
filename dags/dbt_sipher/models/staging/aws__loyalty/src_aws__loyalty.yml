@@ -1,0 +1,114 @@
+version: 2
+
+sources:
+  - name: raw_loyalty_dashboard_gcs
+    database: sipher-data-platform
+
+    freshness: 
+      warn_after: {count: 1, period: day}
+      error_after: {count: 2, period: day}
+    loaded_at_field: "CAST(dt AS timestamp)"
+
+    schema: raw_loyalty_dashboard_gcs
+    tables:
+      - name: loyalty__raw_log_claim_lootbox
+        identifier: gcs_external_raw_loyalty_log_claim_lootbox
+        columns:
+          - name: id
+            tests:
+              - not_null
+          - name: createdAt 
+            tests:
+              - not_null
+          - name: dt
+            tests:
+              - not_null
+              - dbt_expectations.expect_column_values_to_be_of_type: 
+                  column_type: date
+
+      - name: loyalty__raw_log_open_lootbox
+        identifier: gcs_external_raw_loyalty_log_open_lootbox
+        columns:
+          - name: id
+            tests:
+              - not_null
+          - name: createdAt 
+            tests:
+              - not_null
+          - name: dt
+            tests:
+              - not_null
+              - dbt_expectations.expect_column_values_to_be_of_type: 
+                  column_type: date
+
+      - name: loyalty__raw_log_spaceship
+        identifier: gcs_external_raw_loyalty_log_spaceship
+        columns:
+          - name: id
+            tests:
+              - not_null
+          - name: publicAddress
+              - not_null
+          - name: createdAt 
+            tests:
+              - not_null
+          - name: dt
+            tests:
+              - not_null
+              - dbt_expectations.expect_column_values_to_be_of_type: 
+                  column_type: date
+
+      - name: loyalty__raw_log_scrap_spaceship_parts
+        identifier: gcs_external_raw_loyalty_log_scrap_spaceship_parts
+        columns:
+          - name: id
+            tests:
+              - not_null
+          - name: createdAt 
+            tests:
+              - not_null
+          - name: dt
+            tests:
+              - not_null
+              - dbt_expectations.expect_column_values_to_be_of_type: 
+                  column_type: date
+
+      - name: loyalty__raw_pending_mint
+        identifier: gcs_external_raw_loyalty_pending_mint
+        columns:
+          - name: id
+            tests:
+              - not_null
+          - name: "`to`"
+            tests:
+              - not_null
+          - name: signature
+            tests:
+              - not_null
+          - name: createdAt 
+            tests:
+              - not_null
+          - name: dt
+            tests:
+              - not_null
+              - dbt_expectations.expect_column_values_to_be_of_type: 
+                  column_type: date
+              
+      - name: loyalty__raw_burned
+        identifier: gcs_external_raw_loyalty_burned
+        columns:
+          - name: id
+            tests:
+              - not_null
+          - name: "`to`"
+            tests:
+              - not_null
+          - name: createdAt 
+            tests:
+              - not_null
+          - name: dt
+            tests:
+              - not_null
+              - dbt_expectations.expect_column_values_to_be_of_type: 
+                  column_type: date
+

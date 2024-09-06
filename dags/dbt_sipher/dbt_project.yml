@@ -1,0 +1,126 @@
+
+# Name your project! Project names should contain only lowercase characters
+# and underscores. A good package name should reflect your organization's
+# name or the intended use of these models
+name: 'dbt_sipher'
+version: '1.0.0'
+config-version: 2
+
+
+# This setting configures which "profile" dbt uses for this project.
+profile: 'dbt_sipher'
+
+# These configurations specify where dbt should look for different types of files.
+# The `model-paths` config, for example, states that models in this project can be
+# found in the "models/" directory. You probably won't need to change these!
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+target-path: "target"  # directory which will store compiled SQL files
+clean-targets:         # directories to be removed by `dbt clean`
+  - "target"
+  - "dbt_packages"
+
+
+tests:
+  +store_failures: true  # all tests
+
+
+# add var to log tests result and sync to GBQ.
+vars:
+  #all the wallet address should be lowered before adding to project variables
+  dummy_wallet_address: '0x0000000000000000000000000000000000000000'
+  wrapped_ether_address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2'
+  uniswap_v2_sipher_address: '0xf3fdcfbfdb96315fc628854627bdd5e363b3ade4'
+  kyberswap_DMM_LP_sipher_address: '0x9a56f30ff04884cb06da80cb3aef09c6132f5e77'
+  staked_sipher_pool_address: '0x7ee4b5dbc4b97c30a08791ce8601e695735960db'
+  escrowed_sipher_address: '0xb2d1464ae4cc86856474a34d112b4a2efa326ed9'
+  sipher_staking_manager: '0x7776c65e112475cebd4a2fc72e685f35641db3da'
+  sipher_token_wallet_address: '0x9f52c8ecbee10e00d9faaac5ee9ba0ff6550f511'
+  sipher_inu_wallet_address: '0x9c57d0278199c931cf149cc769f37bb7847091e7'
+  sipher_neko_wallet_address: '0x09e0df4ae51111ca27d6b85708cfb3f1f7cae982'
+  surrogate_key_treat_nulls_as_empty_strings: True #turn on legacy behaviour
+  ds: ''
+
+
+# to log tests result and sync to GBQ.
+on-run-end:
+  - "{{ store_test_results(results) }}"
+
+# Configuring models
+# Full documentation: https://docs.getdbt.com/docs/configuring-models
+
+# In this example config, we tell dbt to build all models in the example/ directory
+# as tables. These settings can be overridden in the individual model files
+# using the `{{ config(...) }}` macro.
+models:
+  dbt_sipher:
+    marts:
+      adjust:
+        +schema: "adjust"
+      social:
+        +schema: "mart_social"
+      staking_pool:
+        +schema: "staking_public_data"
+      sipher_odyssey_core:
+        +schema: "sipher_odyssey_core"
+      sipher_odyssey_crafting:
+        +schema: "sipher_odyssey_crafting"
+      sipher_odyssey_level_design:
+        +schema: "sipher_odyssey_level_design"
+      sipher_odyssey_inventory:
+        +schema: "sipher_odyssey_inventory"
+      hidden_atlas_core:
+        +schema: "hidden_atlas_core"
+      artventure:
+        +schema: "artventure"
+      google_ads:
+        +schema: "google_ads"
+      finance_incubator:
+        +schema: "finance_incubator"
+      sipher_odyssey_shop_transaction:
+        +schema: "sipher_odyssey_shop_transaction"
+    staging:
+      adjust:
+        +schema: "staging_adjust"
+      social:
+        +schema: "staging_social"
+      aws__ather_id:
+        +schema: "raw_aws_atherlabs"
+      aws__billing:
+        +schema: "raw_aws_billing_gcs"
+      aws__loyalty:
+        +schema: "raw_aws_loyalty"
+      bigquery_public__crypto_ethereum:
+        +schema: "sipher_ethereum"
+      coinmarketcap:
+        +schema: "raw_etherscan"
+      etherscan:
+        +schema: "raw_etherscan"
+      opensearch_onchain:
+        +schema: "raw_aws_opensearch_onchain_nft"
+      firebase:
+        +schema: "staging_firebase"
+      sipher_server:
+        +schema: "staging_sipher_server"
+      max_mediation:
+        +schema: "staging_max_mediation"
+      artventure:
+        +schema: "raw_artventure"
+      appsflyer:
+        +schema: "staging_appsflyer"
+      sipher_odyssey_shop_transaction:
+        +schema: "staging_sipher_odyssey_shop_transaction"
+    reporting:
+      social:
+        +schema: "reporting_social"
+      adjust:
+        +schema: "reporting_adjust"
+      sipher_odyssey_user:
+        +schema: "reporting_sipher_odyssey_user"
+      finance_incubator:
+        +schema: "finance_incubator"

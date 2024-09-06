@@ -1,0 +1,9 @@
+version: 2
+
+models:
+  - name: mart_level_design_gameplay
+    tests:
+      - decode_dungeon_id_difficulty
+      - missing_dungeon
+      - dbt_utils.equal_rowcount:
+          compare_model: ref('fct_level_design_gameplay')

@@ -1,0 +1,20 @@
+version: 2
+
+models:
+  - name: atherlabs_dashboard_DAU
+    columns:
+      - name: act_date
+        tests:
+          - not_null
+      - name: act_month
+        tests:
+          - not_null
+          - dbt_utils.accepted_range:
+              min_value: 1  
+              max_value: 12
+      - name: user_id_cnt
+        tests:
+          - not_null
+      - name: user_pseudo_id_cnt
+        tests:
+          - not_null

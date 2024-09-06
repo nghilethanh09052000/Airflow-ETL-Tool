@@ -1,0 +1,14 @@
+---
+version: 2
+
+macros:
+  - name: ds_nodash
+    description: |
+      ## Overview
+      It enables us to get a date string which derives from the environment variable `EXECUTION_DATE`.
+      The output should follow `%Y%m%d`.
+      It is inspired by Apache Airflow's `{% raw %}{{ ds_nodash }}{% endraw %}`.
+
+      ## Usage
+      {% raw %}`{{ dbt_airflow_macros.ds_nodash() }}`{% endraw %}}
+      {% raw %}`{{ dbt_airflow_macros.ds_nodash(timezone="Asia/Tokyo") }}`{% endraw %}}

@@ -1,0 +1,125 @@
+version: 2
+
+sources:
+  - name: raw_social
+    database: sipher-data-platform
+    schema: raw_social
+    tables:
+      - name: discord_user_info
+        identifier: discord_user_info__*
+        columns:
+          - name: created_at
+            tests:
+              - not_null
+          - name: id
+            tests:
+              - not_null
+
+      - name: discord_profile_stats
+        identifier: discord_profile_stats__*
+        columns:
+          - name: created_at
+            tests:
+              - not_null
+          - name: id
+            tests:
+              - not_null
+
+      - name: tiktok_profile_stats
+        identifier: tiktok_profile_stats
+        columns:
+          - name: date
+            tests:
+              - not_null
+
+      - name: tiktok_user_info
+        identifier: tiktok_user_info
+        columns:
+          - name: id
+            tests:
+              - not_null
+
+      - name: tiktok_video_comment
+        identifier: tiktok_video_*
+        columns:
+          - name: post_id
+            tests:
+              - not_null
+          - name: "`desc`"
+            tests:
+              - not_null
+
+      - name: twitter_profile_stats
+        identifier: twitter_profile_stats__SIPHERxyz__
+        columns:
+          - name: id
+            tests:
+              - not_null
+
+      - name: twitter_timeline
+        columns: 
+          - name: created_at
+            tests:
+              - not_null
+          - name: id
+            tests:
+              - not_null
+
+      - name: twitter_user_info
+        identifier: twitter_user_info__SIPHERxyz__*
+        columns: 
+          - name: created_at
+            tests:
+              - not_null
+          - name: id
+            tests:
+              - not_null
+
+      - name: facebook_sipher_page_feed
+        columns: 
+          - name: id
+            tests:
+              - not_null
+          - name: __collected_ts
+            tests:
+              - not_null
+          - name: page_id
+            tests:
+              - not_null
+
+      - name: facebook_sipher_post_insights
+        columns:
+          - name: name
+            tests:
+              - not_null
+          - name: id
+            tests: 
+              - not_null
+          - name: __collected_ts
+            tests:
+              - not_null
+
+      - name: facebook_sipher_post_comments
+        columns:
+          - name: post_id
+            tests:
+              - not_null
+          - name: __collected_ts
+            tests:
+              - not_null
+      
+      - name: facebook_sipher_page_insights
+
+      - name: facebook_sipher_page_overall
+
+      - name: facebook_sipher_page_impression_gender_locate
+
+      - name: youtube_overview
+
+      - name: youtube_traffic_sources
+
+      - name: youtube_contents
+
+      - name: youtube_demographics
+
+      - name: youtube_geographic_areas

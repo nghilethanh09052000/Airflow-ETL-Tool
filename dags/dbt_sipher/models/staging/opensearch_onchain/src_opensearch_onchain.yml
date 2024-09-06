@@ -1,0 +1,78 @@
+version: 2
+
+sources:
+  - name: raw_aws_opensearch_onchain_nft
+    database: sipher-data-platform
+
+    freshness: 
+      warn_after: {count: 1, period: day}
+      error_after: {count: 2, period: day}
+    loaded_at_field: "CAST(dt AS timestamp)"
+
+    schema: raw_aws_opensearch_onchain_nft
+    tables:
+      - name: opensearch_onchain__raw_lootbox
+        identifier: raw_opensearch_onchain_Lootbox
+        columns:
+          - name: owner
+            tests:
+              - not_null
+          - name: dt
+            tests:
+              - not_null
+              - dbt_expectations.expect_column_to_exist
+
+      - name: opensearch_onchain__raw_spaceship
+        identifier: raw_opensearch_onchain_Spaceship
+        columns:
+          - name: owner
+            tests:
+              - not_null
+          - name: dt
+            tests:
+              - not_null
+              - dbt_expectations.expect_column_to_exist
+
+      - name: opensearch_onchain__raw_spaceship_parts
+        identifier: raw_opensearch_onchain_SpaceshipParts
+        columns:
+          - name: owner
+            tests:
+              - not_null
+          - name: dt
+            tests:
+              - not_null
+              - dbt_expectations.expect_column_to_exist
+
+      - name: opensearch_onchain__raw_sculpture
+        identifier: raw_opensearch_onchain_Sculpture      
+        columns:
+          - name: owner
+            tests:
+              - not_null
+          - name: dt
+            tests:
+              - not_null
+              - dbt_expectations.expect_column_to_exist
+        
+      - name: opensearch_onchain__raw_inu
+        identifier: raw_opensearch_onchain_INU      
+        columns:
+          - name: owner
+            tests:
+              - not_null
+          - name: dt
+            tests:
+              - not_null
+              - dbt_expectations.expect_column_to_exist
+      
+      - name: opensearch_onchain__raw_neko
+        identifier: raw_opensearch_onchain_NEKO
+        columns:
+          - name: owner
+            tests:
+              - not_null
+          - name: dt
+            tests:
+              - not_null
+              - dbt_expectations.expect_column_to_exist

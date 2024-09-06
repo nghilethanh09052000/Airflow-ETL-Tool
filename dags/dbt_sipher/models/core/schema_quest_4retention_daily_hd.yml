@@ -1,0 +1,28 @@
+version: 2
+
+models:
+  - name: quest_4retention_daily_hd
+    columns:
+      - name: o_time
+        tests:
+          - unique
+          - not_null
+      - name: ending
+        tests:
+          - not_null
+      - name: returns
+        tests:
+          - dbt_utils.expression_is_true:
+              expression: ' >= 0'
+      - name: news
+        tests:
+          - dbt_utils.expression_is_true:
+              expression: ' >= 0'
+      - name: retention
+        tests:
+          - dbt_utils.expression_is_true:
+              expression: ' >= 0'
+      - name: churn_driver
+        tests:
+          - dbt_utils.expression_is_true:
+              expression: ' >= 0'

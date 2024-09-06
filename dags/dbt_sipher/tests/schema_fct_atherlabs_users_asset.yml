@@ -1,0 +1,9 @@
+version: 2
+
+models:
+  - name: fct_atherlabs_users_asset
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - ather_id
+            - wallet_address

@@ -1,0 +1,15 @@
+version: 2
+
+models:
+  - name: spaceship_claimable_lootbox
+    columns:
+      - name: tokenId
+        tests:
+          - not_null
+          - accepted_values: 
+              values: ['0', '1', '2', '3', '4', '5', '6', '-1']
+      - name: lootbox_type
+        tests:
+          - not_null
+          - accepted_values: 
+              values: ['Akagi', 'Alice', 'Flik Flak', 'Ahab', 'Zed', 'Baron', 'Tunku', 'Mystery']

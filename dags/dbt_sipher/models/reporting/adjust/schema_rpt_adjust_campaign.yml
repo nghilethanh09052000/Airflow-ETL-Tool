@@ -1,0 +1,20 @@
+version: 2
+
+models:
+  - name: rpt_adjust_campaign
+    tests:
+      - equal_sum_columns:
+          model_2: ref('fct_adjust')
+          columns: 
+            - revenue
+            - cost
+      - equal_sum_columns:
+          model_2: ref('rpt_adjust_channel')
+          columns: 
+            - revenue
+            - cost
+      - equal_sum_columns:
+          model_2: ref('rpt_adjust_country')
+          columns: 
+            - revenue
+            - cost

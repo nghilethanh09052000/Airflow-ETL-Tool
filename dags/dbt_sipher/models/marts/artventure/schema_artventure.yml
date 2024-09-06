@@ -1,0 +1,29 @@
+version: 2
+
+models:
+  - name: dim_artventure_user
+    columns:
+      - name: user_id
+        tests:
+          - not_null
+      - name: user_email
+        tests:
+          - not_null
+
+  - name: fct_artventure_task_events
+    columns:
+      - name: date
+        tests:
+          - not_null
+      - name: task_id
+        tests:
+          - not_null
+      - name: status
+        tests:
+          - not_null
+
+  - name: fct_artventure_user_events
+    columns:
+      - name: user_id
+        tests:
+          - not_null

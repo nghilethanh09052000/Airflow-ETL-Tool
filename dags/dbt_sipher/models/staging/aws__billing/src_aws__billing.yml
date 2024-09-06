@@ -1,0 +1,136 @@
+version: 2
+
+sources:
+  - name: raw_aws_billing_gcs
+    database: sipher-data-platform
+        
+    freshness: 
+      warn_after: {count: 1, period: day}
+      error_after: {count: 2, period: day}
+    loaded_at_field: "CAST(dt AS timestamp)"
+
+    schema: raw_aws_billing_gcs
+    tables:
+      - name: billing__raw_blockchain
+        identifier: gcs_external_raw_blockchain_billing
+        columns:
+          - name: identity_LineItemId
+            tests:
+              - not_null
+              - dbt_expectations.expect_column_to_exist
+          - name: lineItem_ProductCode
+            tests:
+              - not_null
+          - name: lineItem_UnblendedCost
+            tests:
+              - not_null
+          - name: lineItem_BlendedCost
+            tests:
+              - not_null
+          - name: lineItem_LineItemDescription
+            tests:
+              - dbt_expectations.expect_column_to_exist
+          - name: dt
+            tests:
+              - not_null
+              - dbt_expectations.expect_column_values_to_be_of_type: 
+                  column_type: date
+
+      - name: billing__raw_g1
+        identifier: gcs_external_raw_g1_billing
+        columns:
+          - name: identity_LineItemId
+            tests:
+              - not_null
+              - dbt_expectations.expect_column_to_exist
+          - name: lineItem_ProductCode
+            tests:
+              - not_null
+          - name: lineItem_UnblendedCost
+            tests:
+              - not_null
+          - name: lineItem_BlendedCost
+            tests:
+              - not_null
+          - name: lineItem_LineItemDescription
+            tests:
+              - dbt_expectations.expect_column_to_exist
+          - name: dt
+            tests:
+              - dbt_expectations.expect_column_values_to_be_of_type: 
+                  column_type: date
+
+      - name: billing__raw_marketplace
+        identifier: gcs_external_raw_marketplace_billing
+        columns:
+          - name: identity_LineItemId
+            tests:
+              - not_null
+              - dbt_expectations.expect_column_to_exist
+          - name: lineItem_ProductCode
+            tests:
+              - not_null
+          - name: lineItem_UnblendedCost
+            tests:
+              - not_null
+          - name: lineItem_BlendedCost
+            tests:
+              - not_null
+          - name: lineItem_LineItemDescription
+            tests:
+              - dbt_expectations.expect_column_to_exist
+          - name: dt
+            tests:
+              - not_null
+              - dbt_expectations.expect_column_values_to_be_of_type: 
+                  column_type: date
+
+      - name: billing__raw_game_production
+        identifier: gcs_external_raw_game_production_billing
+        columns:
+          - name: identity_LineItemId
+            tests:
+              - not_null
+              - dbt_expectations.expect_column_to_exist
+          - name: lineItem_ProductCode
+            tests:
+              - not_null
+          - name: lineItem_UnblendedCost
+            tests:
+              - not_null
+          - name: lineItem_BlendedCost
+            tests:
+              - not_null
+          - name: lineItem_LineItemDescription
+            tests:
+              - dbt_expectations.expect_column_to_exist
+          - name: dt
+            tests:
+              - not_null
+              - dbt_expectations.expect_column_values_to_be_of_type: 
+                  column_type: date
+
+      - name: billing__raw_metaverse
+        identifier: gcs_external_raw_metaverse_billing
+        columns:
+          - name: identity_LineItemId
+            tests:
+              - not_null
+              - dbt_expectations.expect_column_to_exist
+          - name: lineItem_ProductCode
+            tests:
+              - not_null
+          - name: lineItem_UnblendedCost
+            tests:
+              - not_null
+          - name: lineItem_BlendedCost
+            tests:
+              - not_null
+          - name: lineItem_LineItemDescription
+            tests:
+              - dbt_expectations.expect_column_to_exist
+          - name: dt
+            tests:
+              - not_null
+              - dbt_expectations.expect_column_values_to_be_of_type: 
+                  column_type: date

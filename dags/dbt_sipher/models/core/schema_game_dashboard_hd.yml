@@ -1,0 +1,18 @@
+version: 2
+
+models:
+  - name: game_dashboard_hd
+    columns:
+      - name: event_date
+        tests:
+          - dbt_utils.not_null_proportion:
+              at_least: 0.8
+
+    # tests:
+    #   - not_null:
+    #     column_names:
+    #       - 
+    #       - dau
+    #       - session_duration
+    #       - device_os
+    #       - country

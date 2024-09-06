@@ -1,0 +1,15 @@
+version: 2
+
+sources:
+  - name: raw_game_meta
+    database: sipher-data-platform
+
+    freshness: 
+      warn_after: {count: 1, period: hour}
+      error_after: {count: 2, period: hour}
+    loaded_at_field: "TIMESTAMP_MILLIS(CAST(updated_balance_timestamp AS INT64))"
+
+    schema: raw_game_meta
+    tables:
+      - name: raw_inventory_balancing_update
+        identifier: raw_inventory_balancing_update

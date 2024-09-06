@@ -1,0 +1,26 @@
+version: 2
+
+sources:
+  - name: raw_etherscan
+    database: sipher-data-platform
+
+    freshness: 
+      warn_after: {count: 1, period: day}
+      error_after: {count: 2, period: day}
+    loaded_at_field: "TIMESTAMP_SECONDS(timestamp)"
+
+    schema: raw_etherscan
+    tables:
+      - name: etherscan_polygon_important_wallet_accounts_balance
+        identifier: etherscan_polygon_important_wallet_accounts_balance
+        columns:
+          - name: wallet_address
+            tests:
+              - not_null
+          - name: token_symbol
+            tests:
+              - not_null
+          - name: timestamp
+            tests:
+              - not_null
+              - dbt_expectations.expect_column_to_exist

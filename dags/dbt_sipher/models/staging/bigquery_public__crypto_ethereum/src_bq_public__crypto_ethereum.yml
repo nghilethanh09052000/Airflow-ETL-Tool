@@ -1,0 +1,29 @@
+version: 2
+
+sources:
+  - name: crypto_ethereum
+    database: bigquery-public-data
+
+    freshness: 
+      warn_after: {count: 1, period: day}
+      error_after: {count: 2, period: day}
+    loaded_at_field: "CAST(block_timestamp AS timestamp)"
+
+    schema: crypto_ethereum
+    tables:
+      - name: token_transfers
+        identifier: token_transfers
+        columns:
+          - name: block_timestamp
+            tests:
+              - not_null
+              - dbt_expectations.expect_column_to_exist
+          - name: token_name
+              - not_nulls
+  
+  - name: crypto_polygon
+    database: bigquery-public-data
+    schema: crypto_polygon
+    tables:
+      - name: token_transfers
+        identifier: token_transfers

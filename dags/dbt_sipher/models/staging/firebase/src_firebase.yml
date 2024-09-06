@@ -1,0 +1,85 @@
+version: 2
+
+sources:
+  - name: raw_firebase_sipher_odyssey
+    database: sipherg1production
+
+    freshness: 
+      warn_after: {count: 1, period: day}
+      error_after: {count: 2, period: day}
+    loaded_at_field: "TIMESTAMP_MICROS(event_timestamp)"
+
+    schema: analytics_387396350
+    tables:
+      - name: events
+        identifier: events_*
+        columns:
+          - name: event_timestamp
+            tests:
+              - not_null
+              - dbt_expectations.expect_column_to_exist
+          - name: event_name
+            tests:
+              - not_null
+          - name: event_params
+            tests:
+              - dbt_expectations.expect_column_to_exist
+          - name: user_properties
+            tests:
+              - dbt_expectations.expect_column_to_exist
+          - name: ecommerce
+            tests:
+              - dbt_expectations.expect_column_to_exist
+          - name: items
+            tests:
+              - dbt_expectations.expect_column_to_exist
+          - name: collected_traffic_source
+            tests:
+              - dbt_expectations.expect_column_to_exist
+
+  - name: raw_firebase_hidden_atlas
+    database: hidden-atlas
+
+    freshness: 
+      warn_after: {count: 1, period: day}
+      error_after: {count: 2, period: day}
+    loaded_at_field: "TIMESTAMP_MICROS(event_timestamp)"
+
+    schema: analytics_402014087
+    tables:
+      - name: events
+        identifier: events_*
+        columns:
+          - name: event_timestamp
+            tests:
+              - not_null
+              - dbt_expectations.expect_column_to_exist
+          - name: event_name
+            tests:
+              - not_null
+          - name: event_params
+            tests:
+              - dbt_expectations.expect_column_to_exist
+
+  - name: raw_firebase_artventure
+    database: art-venture-387704
+
+    freshness: 
+      warn_after: {count: 1, period: day}
+      error_after: {count: 2, period: day}
+    loaded_at_field: "TIMESTAMP_MICROS(event_timestamp)"
+    schema: analytics_376091252
+    tables:
+      - name: events
+        identifier: events_*
+        columns:
+          - name: event_timestamp
+            tests:
+              - not_null
+              - dbt_expectations.expect_column_to_exist
+          - name: event_name
+            tests:
+              - not_null
+          - name: event_params
+            tests:
+              - dbt_expectations.expect_column_to_exist

@@ -1,0 +1,16 @@
+---
+version: 2
+
+macros:
+  - name: execution_date
+    description: |
+      ## Overview
+      It enables us to get a `datetime` object, not string.
+      The value is set by the environment variable `EXECUTION_DATE`.
+      It is inspired by Apache Airflow's `{% raw %}{{ execution_date }}{% endraw %}`.
+
+      The default value is the system local time, no matter what time zone it uses.
+
+      ## Usage
+      {% raw %}`{{ dbt_airflow_macros.execution_date() }}`{% endraw %}}
+      {% raw %}`{{ dbt_airflow_macros.execution_date(timezone="Asia/Tokyo") }}`{% endraw %}}

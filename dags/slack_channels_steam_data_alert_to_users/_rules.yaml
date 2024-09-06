@@ -1,0 +1,28 @@
+rules:
+  - name: pct_revenue_greater_than_30000_and_revenue_greater_than_20000
+    condition: "pct_revenue > 30 and revenue > 20000"
+    slack:
+      - title: ":slot_machine: Change in Estimated Revenue for Steam Apps in All Categories :slot_machine:"
+        message: |
+          *Game Name*: {name}
+          *Release date*: {releaseDate}
+          *Downloads*: {copiesSold}
+          *Previous gross revenue*: {previous_revenue} 
+          *Gross revenue*: `${revenue}` (+{delta_revenue}) ({pct_revenue}%)
+          *Average playtime*: `{avgPlaytime}`
+          *Followers*: {followers}
+          
+
+  - name: download_greater_than_10000_and_pct_download_greater_than_30
+    condition: "copiesSold > 10000 and pct_copiesSold > 30"
+    slack:
+      - title: ":fire: Change in Estimated Download for Steam Apps in All Categories :fire:"
+        message: |
+          *Game Name*: {name}
+          *Release date*: {releaseDate}
+          *Previous Downloads*: {previous_copiesSold} 
+          *Downloads*: `{copiesSold}` (+{delta_copiesSold}) ({pct_copiesSold}%)
+          *Gross revenue*: {revenue}
+          *Average playtime*: `{avgPlaytime}`
+          *Followers*: {followers}
+          

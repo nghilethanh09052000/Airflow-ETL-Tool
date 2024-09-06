@@ -1,0 +1,11 @@
+version: 2
+
+models:
+  - name: fct_google_ads_cost
+    columns:
+      - name: campaign_id
+        tests:
+          - not_null
+      - name: ad_id
+        tests: 
+          - not_null

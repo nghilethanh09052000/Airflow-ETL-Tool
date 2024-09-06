@@ -1,0 +1,13 @@
+version: 2
+
+models:
+  - name: dim_google_ads_ad_group_status
+    columns:
+      - name: ad_group_id
+        tests:
+          - dbt_utils.not_constant
+          - not_null
+      - name: ad_group_name
+        tests: 
+          - dbt_utils.not_empty_string
+          

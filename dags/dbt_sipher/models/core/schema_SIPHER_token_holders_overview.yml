@@ -1,0 +1,8 @@
+version: 2
+
+models:
+  - name: SIPHER_token_holders_overview
+    columns:
+      - name: user_address
+        tests:
+          - not_null

@@ -1,0 +1,15 @@
+version: 2
+
+models:
+  - name: rpt_adjust_events
+    tests:
+    - dbt_utils.unique_combination_of_columns:
+        combination_of_columns:
+          - created_at_date
+          - app_name_dashboard
+          - app_version
+          - environment
+          - os_name
+          - device_type
+
+

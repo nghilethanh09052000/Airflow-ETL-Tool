@@ -1,0 +1,48 @@
+version: 2
+
+sources:
+  - name: raw_max_mediation
+    database: sipher-data-platform
+
+    freshness: 
+      warn_after: {count: 1, period: day}
+      error_after: {count: 2, period: day}
+    loaded_at_field: "TIMESTAMP_MICROS(__collected_ts)"
+
+    schema: raw_max_mediation
+    tables:
+      - name: raw_ad_revenue
+        identifier: raw_ad_revenue
+        columns:
+          - name: application
+            tests:
+              - not_null
+          - name: store_id
+            tests:
+              - not_null
+          - name: __collected_ts
+            tests:
+              - not_null
+              - dbt_expectations.expect_column_to_exist
+
+      - name: raw_user_ad_revenue
+        identifier: raw_user_ad_revenue
+        columns:
+          - name: Ad_Unit_ID
+            tests:
+              - not_null
+          - name: User_ID
+            tests:
+              - not_null
+          - name: Revenue
+            tests:
+              - dbt_expectations.expect_column_to_exist
+          - name: app_id
+            tests:
+              - not_null
+          - name: __collected_ts
+            tests:
+              - not_null
+              - dbt_expectations.expect_column_to_exist
+      - name: raw_cohort_ad_revenue_perpormance
+        identifier: raw_cohort_ad_revenue_perpormance

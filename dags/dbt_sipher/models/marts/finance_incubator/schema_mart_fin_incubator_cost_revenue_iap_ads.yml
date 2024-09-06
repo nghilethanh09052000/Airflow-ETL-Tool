@@ -1,0 +1,16 @@
+version: 2
+
+models:
+  - name: mart_fin_incubator_cost_revenue_iap_ads
+    tests:
+      - equal_sum_difference_columns_date:
+            model_2: ref('fct_fin_incubator_cost')
+            column_1: cost_usd
+            column_2: cost_usd
+            column_date: date_tzutc
+            day: 0
+    columns:
+      - name: date_tzutc
+        tests:
+          - not_null
+      

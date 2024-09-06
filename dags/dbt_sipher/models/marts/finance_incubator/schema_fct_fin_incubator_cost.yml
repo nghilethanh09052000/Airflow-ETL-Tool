@@ -1,0 +1,8 @@
+version: 2
+
+models:
+  - name: fct_fin_incubator_cost
+    columns:
+      - name: date_tzutc
+        tests:
+          - not_null

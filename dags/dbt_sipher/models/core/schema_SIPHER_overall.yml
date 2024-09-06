@@ -1,0 +1,18 @@
+version: 2
+
+models:
+  - name: SIPHER_overall
+    columns:
+      - name: act_date
+        tests:
+          - dbt_utils.not_null_proportion:
+               at_least: 0.8
+    # tests:
+    #   - not_null:
+    #     column_names:
+    #       - act_date,
+    #       - token_address,
+    #       - token_name,
+    #       - sipher_earners,
+    #       - sipher_spenders,
+    #       - transactions

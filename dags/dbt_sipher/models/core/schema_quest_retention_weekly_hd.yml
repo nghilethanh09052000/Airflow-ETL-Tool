@@ -1,0 +1,13 @@
+version: 2
+
+models:
+  - name: quest_retention_weekly_hd
+    columns:
+      - name: period
+        tests:
+          - dbt_utils.not_null_proportion:
+              at_least: 0.15
+      - name: quest_userId
+        tests:
+          - dbt_utils.not_null_proportion:
+              at_least: 0.15

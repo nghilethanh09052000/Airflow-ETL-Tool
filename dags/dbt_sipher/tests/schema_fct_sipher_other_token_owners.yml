@@ -1,0 +1,8 @@
+version: 2
+
+models:
+  - name: fct_sipher_other_token_owners
+    columns:
+      - name: wallet_address
+        tests:
+          - unique

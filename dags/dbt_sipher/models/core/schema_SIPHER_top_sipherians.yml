@@ -1,0 +1,19 @@
+version: 2
+
+models:
+  - name: SIPHER_top_sipherians
+    columns:
+      - name: act_date
+        tests:
+          - dbt_utils.not_null_proportion:
+               at_least: 0.80
+    # tests:
+    #   - not_null:
+    #     column_names:
+    #       - act_date,
+    #       - from_address,
+    #       - to_address,
+    #       - token_address,
+    #       - token_name,
+    #       - sipher_value
+    #       - transactions

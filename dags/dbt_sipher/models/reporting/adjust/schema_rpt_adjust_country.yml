@@ -1,0 +1,10 @@
+version: 2
+
+models:
+  - name: rpt_adjust_country
+    tests:
+      - equal_sum_columns:
+          model_2: ref('fct_adjust')
+          columns: 
+            - revenue
+            - cost

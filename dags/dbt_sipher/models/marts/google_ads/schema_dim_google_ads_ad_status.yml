@@ -1,0 +1,15 @@
+version: 2
+
+models:
+  - name: dim_google_ads_ad_status
+    columns:
+      - name: ad_id
+        tests:
+          - dbt_utils.not_constant
+          - not_null
+      - name: ad_descriptions
+        tests: 
+          - dbt_utils.not_empty_string
+      - name: ad_headlines
+        tests:
+          - dbt_utils.not_empty_string

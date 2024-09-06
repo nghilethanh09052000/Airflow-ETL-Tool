@@ -1,0 +1,61 @@
+version: 2
+
+models:
+  - name: fct_level_design_lvl
+    tests:
+
+      - missing_level
+
+      - hploss_non_zero_when_down_nonzero:
+          hp_column: hp_loss
+          down_column: down
+
+      - dbt_utils.expression_is_true:
+          expression: "LENGTH(session_id) >= 5"
+
+      - dbt_utils.expression_is_true:
+          expression: "level_start_level_count <= 12"
+          config:
+            where: " REGEXP_CONTAINS(UPPER(dungeon_id),  'FTUE|ENDLESS') = FALSE "
+
+      - check_columns_for_nulls:
+          condition: "1=1"
+          columns:
+            - level_start_event_date
+            - level_start_event_timestamp
+            - build_number
+            - app_version
+            - email
+            - user_name
+            - user_pseudo_id
+            - user_id
+            - day0_date_tzutc
+            - session_id
+            - dungeon_id
+            - mode
+            - difficulty
+            - sub_race
+            - character_level
+            - character_PS
+            - armor
+            - armor_PS
+            - head
+            - head_PS
+            - shoes
+            - shoes_PS
+            - legs
+            - legs_PS
+            - gloves
+            - gloves_PS
+            - weapon1
+            - weapon1_PS
+            - weapon2
+            - weapon2_PS
+            - level_start_level_count
+
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - user_id
+            - session_id
+            - level_start_level_count
+    

@@ -1,0 +1,40 @@
+version: 2
+
+sources:
+  - name: dbt_sipher
+    database: sipher-data-platform
+    schema: dbt_sipher
+    tables:
+      - name: country_codes
+        identifier: country_codes
+  
+  - name: gcp_billing
+    database: sipher-data-platform
+    schema: gcp_billing
+    tables:
+      - name: cost_analysis
+        identifier: cost_analysis
+  
+  - name: sipher_presentation
+    database: sipher-data-platform
+    schema: sipher_presentation
+    tables:
+      - name: aws_billing
+        identifier: aws_billing
+
+  - name: raw_appsflyer_cost_etl
+    database: sipherg1production
+    schema: raw_appsflyer_cost_etl
+    tables:
+      - name: fct_appsflyer_cost_etl_channel
+        identifier: fct_appsflyer_cost_etl_channel
+  
+  - name: raw_game_appsflyer_locker
+    database: sipherg1production
+    schema: raw_appsflyer_locker
+    tables:
+      - name: installs
+        identifier: installs
+      
+      - name: inapps
+        identifier: inapps

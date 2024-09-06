@@ -1,0 +1,8 @@
+version: 2
+
+models:
+  - name: mart_level_design_lvl
+    tests:
+      - decode_dungeon_id_difficulty
+      - dbt_utils.equal_rowcount:
+          compare_model: ref('fct_level_design_lvl')
